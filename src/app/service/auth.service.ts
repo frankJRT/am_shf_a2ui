@@ -30,7 +30,7 @@ export class AuthService {
   SetUserData(userToken: SocialUser) {
     this.user = userToken;
     localStorage.setItem('user', JSON.stringify(userToken));
-    JSON.parse(localStorage.getItem('user')!);
+    //JSON.parse(localStorage.getItem('user')!);
     this.router.navigate(['/dashboard/default']);
   }
 
@@ -46,10 +46,14 @@ export class AuthService {
     this.socialAuthService.refreshAuthToken(GoogleLoginProvider.PROVIDER_ID);
   }
 
-  getAccessToken(): void {
-    this.socialAuthService
+  getAccessToken() {
+    const userStore = JSON.parse(localStorage.getItem('user')!);
+    return userStore;
+
+    /*this.socialAuthService
       .getAccessToken(GoogleLoginProvider.PROVIDER_ID)
       .then((accessToken) => (this.accessToken = accessToken));
+      */
   }
 
   getGoogleCalendarData(): void {

@@ -5,26 +5,26 @@ import {
   SocialUser,
 } from '@abacritt/angularx-social-login';
 import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
-import { OauthService } from '../../service/oauth.service';
+import { UntypedFormGroup } from '@angular/forms';
 import { TokenDtoService } from '../../service/token-dto.service';
 import { AuthService } from '../../service/auth.service';
-
-export interface User {
-  uid: string;
-  email: string;
-  displayName: string;
-  photoURL: string;
-  emailVerified: boolean;
-}
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, GoogleSigninButtonModule],
+  imports: [
+    CommonModule,
+    GoogleSigninButtonModule,
+    MatCardModule,
+    MatButtonModule,
+    MatIconModule,
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })

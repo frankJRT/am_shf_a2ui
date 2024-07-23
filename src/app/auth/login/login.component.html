@@ -1,23 +1,41 @@
 <script src="https://accounts.google.com/gsi/client" async></script>
-<div class="page-wrapper">
-    <div class="auth-bg">
-        <div class="authentication-box">
-            <div class="card mt-4">
-                <div class="card-body">
-                    <div class="text-center">
-                        <h4>Bienvenido SHF App</h4>
-                        <h5>LOGIN</h5>
-                    </div>
-                    <form class="theme-form" >
-                        
-                        <div class="social mt-3">
-                            <div class="form-group btn-showcase d-flex">
-                                <asl-google-signin-button type='icon' size='medium'></asl-google-signin-button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+<!-- Bootstrap Bundle with Popper -->
+<body
+  class="bg-success bg-gradient d-flex justify-content-center align-items-center vh-100"
+>
+  <div
+    class="bg-white p-5 rounded-5 text-secondary shadow"
+    style="width: 25rem"
+  >
+    <div class="d-flex justify-content-center">
+      <img
+        src="/assets/images/login-icon.svg"
+        alt="login-icon"
+        style="height: 7rem"
+      />
     </div>
-</div>
+    <div class="text-center fs-1 fw-bold">Login</div>
+
+    <div class="d-flex gap-1 justify-content-center mt-1">
+      <div>Sistema de administracion AM SHF</div>
+      <a href="#" class="text-decoration-none text-info fw-semibold"
+        >Bienvenido</a
+      >
+    </div>
+    <div class="p-3">
+      <div class="border-bottom text-center" style="height: 0.9rem">
+        <span class="bg-white px-3">Google In</span>
+      </div>
+    </div>
+    <div class="btn d-flex gap-2 justify-content-center border mt-3 shadow-sm">
+      <form>
+        <asl-google-signin-button
+          type="icon"
+          size="medium"
+        ></asl-google-signin-button>
+      </form>
+    </div>
+  </div>
+</body>

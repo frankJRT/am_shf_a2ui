@@ -10,20 +10,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { NavService } from './services/nav.service';
 
 import { CustomizerService } from './services/customizer.service';
-import { TableService } from './services/table.service';
-// Directives
-import { ToggleFullscreenDirective } from './directives/fullscreen.directive';
-import { NgbdSortableHeader } from './directives/NgbdSortableHeader';
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    FooterComponent,
-    ToggleFullscreenDirective,
-    NgbdSortableHeader,
-  ],
+  declarations: [HeaderComponent, FooterComponent],
   imports: [CommonModule, FormsModule],
-  exports: [NgbdSortableHeader],
-  providers: [NavService, CustomizerService, TableService],
+
+  providers: [NavService, CustomizerService],
 })
 export class SharedModule {}

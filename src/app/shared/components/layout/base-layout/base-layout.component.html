@@ -1,0 +1,57 @@
+<app-header (toggleMenu)="navigation.toggle()"></app-header>
+<app-custom-sidenav #navigation [isOpen]="isOpen">
+  <router-outlet></router-outlet>
+</app-custom-sidenav>
+
+<!--
+<app-header></app-header>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened>
+    <app-custom-sidenav></app-custom-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-navigation>
+      <router-outlet></router-outlet>
+    </app-navigation>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<app-footer></app-footer>
+
+
+<div class="min-h-screen bg-gray-50/50">
+  <app-sidebar />
+  <div class="p-4 xl:ml-80">
+    <nav
+      class="block w-full max-w-full bg-transparent text-white shadow-none rounded-xl transition-all px-0 py-1"
+    >
+      <app-header />
+    </nav>
+    <div class="mt-12">
+      <router-outlet />
+    </div>
+    <div class="text-blue-gray-600">
+      <app-footer />
+    </div>
+  </div>
+</div>
+
+
+<!-- component
+<div class="dark-body-only" id="outer-container">
+  <div class="page-wrapper" id="canvas-bookmark">
+    <app-header></app-header>
+    <div class="page-body-wrapper">
+      <div class="page-sidebar" id="pages-sidebar">
+        <app-sidebar></app-sidebar>
+      </div>
+      <div class="right-sidebar" id="right_side_bar"></div>
+      <div class="page-body">
+        <router-outlet></router-outlet>
+      </div>
+      <footer class="footer">
+        <app-footer></app-footer>
+      </footer>
+    </div>
+  </div>
+</div>
+-->
