@@ -19,12 +19,6 @@ export type MenuItem = {
   styleUrl: './custom-sidenav.component.scss',
 })
 export class CustomSidenavComponent {
-  navItems = [
-    { label: 'Home', link: '/' },
-    { label: 'cartera', link: '/cartera' },
-    { label: 'Settings', link: '/settings' },
-  ];
-
   @Input() isOpen: boolean = false;
   @Input() mode: 'over' | 'push' | 'side' = 'side';
 

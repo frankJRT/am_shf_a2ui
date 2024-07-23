@@ -10,7 +10,7 @@ import {
   providedIn: 'root',
 })
 export class AdminGuard implements CanActivate {
-  private isLocalStorageAvailable = typeof localStorage !== 'undefined';
+  private isLocalStorageAvailable = typeof sessionStorage !== 'undefined';
 
   constructor(public router: Router) {}
 
@@ -20,11 +20,11 @@ export class AdminGuard implements CanActivate {
   ): boolean {
     if (this.isLocalStorageAvailable) {
       if (
-        localStorage.getItem('user') === null ||
-        localStorage.getItem('user') === undefined ||
-        localStorage.getItem('user') == 'null'
+        sessionStorage.getItem('user') === null ||
+        sessionStorage.getItem('user') === undefined ||
+        sessionStorage.getItem('user') == 'null'
       ) {
-        localStorage.clear();
+        //sessionStorage.clear();
         this.router.navigate(['/auth/login']);
         return true;
       } else {

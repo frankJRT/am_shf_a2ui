@@ -5,6 +5,9 @@ import {
 } from '@abacritt/angularx-social-login';
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
+import { TokenDto } from '../models/token-dto';
+import { OauthService } from './oauth.service';
+import { TokenDtoService } from './token-dto.service';
 
 @Injectable({
   providedIn: 'root',
@@ -18,19 +21,31 @@ export class AuthService {
   constructor(
     public router: Router,
     public ngZone: NgZone,
-    private socialAuthService: SocialAuthService
+    private socialAuthService: SocialAuthService,
+    private authService: OauthService,
+    private tokenService: TokenDtoService
   ) {}
 
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user')!);
+    const user = JSON.parse(sessionStorage.getItem('user')!);
     return user !== null && user.emailVerified !== false ? true : false;
   }
 
   SetUserData(userToken: SocialUser) {
-    this.user = userToken;
-    localStorage.setItem('user', JSON.stringify(userToken));
+    sessionStorage.setItem('user', JSON.stringify(userToken));
+    //localStorage.setItem('user', JSON.stringify(userToken));
     //JSON.parse(localStorage.getItem('user')!);
+    const tokenGoogle = new TokenDto(userToken.idToken);
+    this.authService.google(tokenGoogle).subscribe((data) => {
+      this.tokenService.setToken(
+        data.value,
+        userToken.email,
+        userToken.name,
+        userToken.photoUrl
+      );
+      console.log(localStorage.getItem('user'));
+    });
     this.router.navigate(['/dashboard/default']);
   }
 
@@ -48,12 +63,10 @@ export class AuthService {
 
   getAccessToken() {
     const userStore = JSON.parse(localStorage.getItem('user')!);
-    return userStore;
-
-    /*this.socialAuthService
+    this.socialAuthService
       .getAccessToken(GoogleLoginProvider.PROVIDER_ID)
       .then((accessToken) => (this.accessToken = accessToken));
-      */
+    return userStore;
   }
 
   getGoogleCalendarData(): void {

@@ -7,7 +7,13 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 
 import { SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
 import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
-import { provideHttpClient } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  provideHttpClient,
+  withInterceptors,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
+import { CarteraInterceptor } from './interceptors/cartera.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -15,6 +21,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideAnimationsAsync(),
+    provideHttpClient(),
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
@@ -31,6 +38,13 @@ export const appConfig: ApplicationConfig = {
           console.error(error);
         },
       } as SocialAuthServiceConfig,
-    }, provideAnimationsAsync(), provideAnimationsAsync(), provideAnimationsAsync(), provideAnimationsAsync(),
+    },
+    provideAnimationsAsync(),
+    provideHttpClient(withInterceptorsFromDi()),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CarteraInterceptor,
+      multi: true,
+    }, provideAnimationsAsync(),
   ],
 };

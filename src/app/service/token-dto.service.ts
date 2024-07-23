@@ -8,55 +8,57 @@ const name = 'name';
 const photoUrl = 'photoUrl';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TokenDtoService {
   socialUser!: SocialUser;
 
+  constructor(private router: Router) {}
 
-  constructor(private router:Router) {     
-  }
-
-  public getToken(): string|null {
-    return localStorage.getItem(TOKEN_KEY);
+  public getToken(): string | null {
+    return sessionStorage.getItem(TOKEN_KEY);
     //return sessionStorage.getItem(TOKEN_KEY);
   }
 
-  public getEmail(): string|null {
-    return localStorage.getItem(email);
+  public getEmail(): string | null {
+    return sessionStorage.getItem(email);
     //return sessionStorage.getItem(TOKEN_KEY);
   }
-  public getName(): string|null {
-    return localStorage.getItem(name);
+  public getName(): string | null {
+    return sessionStorage.getItem(name);
     //return sessionStorage.getItem(TOKEN_KEY);
   }
-  public getPotho(): string|null {
-    return localStorage.getItem(photoUrl);
+  public getPotho(): string | null {
+    return sessionStorage.getItem(photoUrl);
     //return sessionStorage.getItem(TOKEN_KEY);
   }
-  
 
-  public setToken(token: string, mail: string, nam: string, poth:string): void {
-    localStorage.clear();
-    localStorage.setItem(TOKEN_KEY,token);
-    localStorage.setItem(email,mail);
-    localStorage.setItem(name,nam);
-    localStorage.setItem(photoUrl,poth);
-    
+  public setToken(
+    token: string,
+    mail: string,
+    nam: string,
+    poth: string
+  ): void {
+    //sessionStorage.clear();
+    sessionStorage.setItem(TOKEN_KEY, token);
+    sessionStorage.setItem(email, mail);
+    sessionStorage.setItem(name, nam);
+    sessionStorage.setItem(photoUrl, poth);
+
     //sessionStorage.removeItem(TOKEN_KEY);
     //sessionStorage.setItem(TOKEN_KEY,token);
   }
 
-  public isLogged():boolean{
-    if(this.getToken()){
+  public isLogged(): boolean {
+    if (this.getToken()) {
       return true;
     }
     return false;
   }
 
-  logOut(): void{
-    localStorage.clear()
+  logOut(): void {
+    sessionStorage.clear();
     this.router.navigate(['']);
-    //sessionStorage.clear();
+    sessionStorage.clear();
   }
 }

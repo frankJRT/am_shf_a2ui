@@ -1,0 +1,16 @@
+<h3>action comportamientio</h3>
+
+<h1 mat-dialog-title>{{ descripcion }}</h1>
+<div mat-dialog-content>
+  <p>{{ actionName }}</p>
+</div>
+<div mat-dialog-actions>
+  <button
+    mat-button
+    (click)="execueteAction()"
+    [class.spinner]="loading"
+    [disabled]="loading"
+  >
+    Ejecutar
+  </button>
+</div>

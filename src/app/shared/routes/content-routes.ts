@@ -6,7 +6,7 @@ export const content: Routes = [
   {
     path: 'cartera',
     //redirectTo: 'cartera/',
-    canActivate: [AdminGuard],
+    //canActivate: [AdminGuard],
     children: contentCartera,
   },
 ];

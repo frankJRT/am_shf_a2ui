@@ -4,7 +4,6 @@ import {
   GoogleSigninButtonModule,
   SocialUser,
 } from '@abacritt/angularx-social-login';
-import { GoogleLoginProvider } from '@abacritt/angularx-social-login';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -12,7 +11,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { UntypedFormGroup } from '@angular/forms';
-import { TokenDtoService } from '../../service/token-dto.service';
 import { AuthService } from '../../service/auth.service';
 
 @Component({
@@ -41,14 +39,12 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private socialAuthService: SocialAuthService,
-    private authService: AuthService,
-    private tokenService: TokenDtoService
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
-    this.isLoggedin = this.tokenService.getToken != null;
+    //this.isLoggedin = this.tokenService.getToken != null;
     this.socialAuthService.authState.subscribe((user: any) => {
-      console.log(user);
       this.authService.SetUserData(user);
     });
   }
