@@ -1,10 +1,29 @@
-<mat-toolbar>
-  <button mat-icon-button (click)="toggleMenu.emit()">
+<mat-toolbar class="bg-success">
+  <button
+    mat-icon-button
+    (click)="toggleMenu.emit()"
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+  >
     <mat-icon>menu</mat-icon>
   </button>
-  <span>My App</span>
-  <span class="spacer"></span>
-  <span>{{ userName }}</span>
-  <!--<button mat-button color="warn" (click)="login()">Login</button>-->
-  <button mat-button color="warn" (click)="login()">Login</button>
+  <span class="lead">AM SHF</span>
+  <span class="example-spacer"></span>
+  <span class="lead">{{ userName }}</span>
+  <button
+    (click)="login()"
+    mat-icon-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+  >
+    <mat-icon>login</mat-icon>
+  </button>
+  <button
+    (click)="logout()"
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+  >
+    <mat-icon>logout</mat-icon>
+  </button>
 </mat-toolbar>

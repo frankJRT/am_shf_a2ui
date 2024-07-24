@@ -1,16 +1,15 @@
-<h3>action comportamientio</h3>
-
-<h1 mat-dialog-title>{{ descripcion }}</h1>
-<div mat-dialog-content>
-  <p>{{ actionName }}</p>
-</div>
-<div mat-dialog-actions>
-  <button
-    mat-button
-    (click)="execueteAction()"
-    [class.spinner]="loading"
-    [disabled]="loading"
-  >
-    Ejecutar
-  </button>
+<div class="card text-white bg-secondary mb-3" style="width: 18rem">
+  <div class="card-body">
+    <h5 class="card-title">{{ descripcion }}</h5>
+    <p class="card-text">{{ actionName }}</p>
+    <button
+      mat-button
+      class="btn btn-danger"
+      (click)="execueteAction()"
+      [class.spinner]="loading"
+      [disabled]="loading"
+    >
+      Ejecutar
+    </button>
+  </div>
 </div>

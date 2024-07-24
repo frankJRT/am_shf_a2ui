@@ -20,9 +20,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgIf, DatePipe } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { MatMenuModule } from '@angular/material/menu';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-comportamiento',
@@ -35,6 +37,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
     ReactiveFormsModule,
     MatMenuModule,
     DetalleArchivoComponent,
+    MatDatepickerModule,
     NgIf,
   ],
   templateUrl: './comportamiento.component.html',

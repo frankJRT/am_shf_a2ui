@@ -34,8 +34,6 @@ export class AuthService {
 
   SetUserData(userToken: SocialUser) {
     sessionStorage.setItem('user', JSON.stringify(userToken));
-    //localStorage.setItem('user', JSON.stringify(userToken));
-    //JSON.parse(localStorage.getItem('user')!);
     const tokenGoogle = new TokenDto(userToken.idToken);
     this.authService.google(tokenGoogle).subscribe((data) => {
       this.tokenService.setToken(
@@ -44,17 +42,16 @@ export class AuthService {
         userToken.name,
         userToken.photoUrl
       );
-      console.log(localStorage.getItem('user'));
     });
     this.router.navigate(['/dashboard/default']);
   }
 
   SignOut() {
-    localStorage.clear();
-    localStorage.removeItem('user');
+    sessionStorage.clear();
+    sessionStorage.removeItem('user');
     this.showLoader = false;
-    this.router.navigate(['/auth/login']);
     this.socialAuthService.signOut();
+    this.router.navigate(['/auth/login']);
   }
 
   refreshToken(): void {
@@ -62,10 +59,11 @@ export class AuthService {
   }
 
   getAccessToken() {
-    const userStore = JSON.parse(localStorage.getItem('user')!);
+    const userStore = JSON.parse(sessionStorage.getItem('user')!);
+    /*
     this.socialAuthService
       .getAccessToken(GoogleLoginProvider.PROVIDER_ID)
-      .then((accessToken) => (this.accessToken = accessToken));
+      .then((accessToken) => (this.accessToken = accessToken));*/
     return userStore;
   }
 

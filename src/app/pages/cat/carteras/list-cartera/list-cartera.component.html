@@ -1,6 +1,6 @@
 <mat-form-field>
   <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input />
+  <input matInput (keyup)="applyFilter($event)" placeholder="Fiso" #input />
 </mat-form-field>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
   <!-- Position Column -->
@@ -39,8 +39,8 @@
     <th mat-header-cell *matHeaderCellDef>Procesos</th>
     <td mat-cell *matCellDef="let element">
       <button
+        class="btn btn-success"
         mat-button
-        color="primary"
         (click)="getCarteraDetalle($event, element)"
       >
         ir a procesos

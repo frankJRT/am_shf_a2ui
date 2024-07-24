@@ -1,12 +1,11 @@
 <mat-card>
-  <mat-card-title>{{ cartera }}</mat-card-title>
-  <mat-card-subtitle>{{ clave }}</mat-card-subtitle>
+  <mat-card-title>
+    <span class="lead text-center"
+      ><p>Fideicomiso: {{ cartera }}</p>
+    </span>
+  </mat-card-title>
+
   <mat-tab-group mat-align-tabs="start">
-    <!--
-    <mat-tab label="Archivos">
-      <app-archivos [idCartera]="idcartera"></app-archivos>
-    </mat-tab>
-    -->
     <mat-tab label="Comportamiento">
       <app-comportamiento [idCartera]="idcartera"></app-comportamiento>
     </mat-tab>

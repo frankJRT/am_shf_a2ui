@@ -1,49 +1,47 @@
-<div style="height: 700px; width: 98%">
-  <div class="row">
-    <p></p>
-    <p class="fs-3">Archivo de comportamiento XML</p>
-    <form class="row g-12" [formGroup]="myForm" (ngSubmit)="submit()">
-      <div class="col-auto">
-        <label for="staticEmail2" class="visually-hidden">Email</label>
-        <input
-          formControlName="file"
-          id="file"
-          type="file"
-          name="file"
-          class="form-control"
-          (change)="onFileChange($event)"
-        />
-      </div>
-
-      <div class="col-auto">
-        <button
-          class="btn btn-primary"
-          [disabled]="myForm.invalid"
-          type="submit"
-        >
-          Procesar archivo
-        </button>
-      </div>
-      <div
-        *ngIf="f['file'].touched && f['file'].invalid"
-        class="alert alert-danger"
-      >
-        <div *ngIf="f['file'].errors && f['file'].errors['required']">
-          File is required.
+<div class="container">
+  <div class="row m-3">
+    <div class="col-sm-12">
+      <p class="lead">Archivo de comportamiento XML</p>
+      <form class="row g-12" [formGroup]="myForm" (ngSubmit)="submit()">
+        <div class="col-auto">
+          <label for="staticEmail2" class="visually-hidden">Email</label>
+          <input
+            formControlName="file"
+            id="file"
+            type="file"
+            name="file"
+            class="form-control"
+            (change)="onFileChange($event)"
+          />
         </div>
-      </div>
-    </form>
-    <p></p>
-  </div>
 
+        <div class="col-auto">
+          <button
+            class="btn btn-primary"
+            [disabled]="myForm.invalid"
+            type="submit"
+          >
+            Procesar archivo
+          </button>
+        </div>
+        <div
+          *ngIf="f['file'].touched && f['file'].invalid"
+          class="alert alert-danger"
+        >
+          <div *ngIf="f['file'].errors && f['file'].errors['required']">
+            File is required.
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
   <div class="row">
-    <div class="col-6 border">
-      <p></p>
+    <div class="col-sm-12 m-3">
       <p class="fs-6">Periodos Procesados</p>
       <table
+        class="mat-elevation-z8 table table-dark table-striped"
         mat-table
         [dataSource]="periodoProcesos"
-        class="mat-elevation-z8 demo-table"
       >
         <ng-container matColumnDef="id">
           <th mat-header-cell *matHeaderCellDef>No.</th>
@@ -59,15 +57,17 @@
 
         <ng-container matColumnDef="I_Periodo">
           <th mat-header-cell *matHeaderCellDef>Periodo</th>
-          <td mat-cell *matCellDef="let element">{{ element.i_Periodo.id }}</td>
+          <td mat-cell *matCellDef="let element">
+            {{ element.i_Periodo.id }}
+          </td>
         </ng-container>
 
         <ng-container matColumnDef="actions">
           <th mat-header-cell *matHeaderCellDef>Procesos</th>
           <td mat-cell *matCellDef="let element">
             <button
+              class="btn btn-info"
               mat-button
-              color="primary"
               (click)="getArchivos($event, element)"
             >
               Archivos
@@ -78,7 +78,13 @@
         <ng-container matColumnDef="production">
           <th mat-header-cell *matHeaderCellDef>Cargar Data</th>
           <td mat-cell *matCellDef="let element">
-            <button mat-button [matMenuTriggerFor]="menu">Operaciones</button>
+            <button
+              class="btn btn-warning"
+              mat-button
+              [matMenuTriggerFor]="menu"
+            >
+              Operaciones
+            </button>
             <mat-menu #menu="matMenu">
               <button mat-menu-item (click)="dataProduction($event, element)">
                 Subir Datos
@@ -127,14 +133,12 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
     </div>
-
-    <div class="col-6 border">
-      <p></p>
+    <div class="col-sm-12 m-3">
       <p class="fs-6">Archivos</p>
       <table
         mat-table
+        class="mat-elevation-z8 table table-dark table-striped"
         [dataSource]="controlEnvios"
-        class="mat-elevation-z8 file-table"
       >
         <ng-container matColumnDef="fileName">
           <th mat-header-cell *matHeaderCellDef>Archivo</th>
@@ -160,7 +164,7 @@
           <td mat-cell *matCellDef="let element">
             <button
               mat-button
-              color="primary"
+              class="btn btn-success"
               (click)="openDialog($event, element)"
             >
               ver
@@ -173,7 +177,7 @@
           <td mat-cell *matCellDef="let element">
             <button
               mat-mini-fab
-              color="warn"
+              class="btn btn-primary"
               aria-label="Delete file"
               (click)="deleteFiles($event, element)"
             >
