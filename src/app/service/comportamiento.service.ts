@@ -6,6 +6,7 @@ import { PeriodoProceso } from '../models/periodo-proceso';
 import { ControlEnvio } from '../models/control-envio';
 import { ControlEnvioStatic } from '../models/control-envio-static';
 import { environment } from '../../environments/environment';
+import { CarteraComportamientoBitacora } from '../models/cartera-comportamiento-bitacora';
 
 const cabecera = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -24,6 +25,19 @@ export class ComportamientoService {
     let params = new HttpParams().set('id', cartera);
     return this.httpClient.get<PeriodoProceso[]>(
       this.comportamientoUrl + 'listPeriodoProcesos',
+      {
+        params: params,
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+      }
+    );
+  }
+
+  public listBitacoraComportamiento(): Observable<
+    CarteraComportamientoBitacora[]
+  > {
+    let params = new HttpParams();
+    return this.httpClient.get<CarteraComportamientoBitacora[]>(
+      this.comportamientoUrl + 'listBitacoraComportamiento',
       {
         params: params,
         headers: new HttpHeaders({ 'Content-Type': 'application/json' }),

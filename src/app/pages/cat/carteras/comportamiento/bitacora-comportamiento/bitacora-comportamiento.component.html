@@ -1,0 +1,55 @@
+<div class="row-12">
+  <div class="col m-3">
+    <p></p>
+    <h3>Procesos</h3>
+  </div>
+</div>
+<div class="row-12 m-3">
+  <div class="col">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      class="mat-elevation-z8 demo-table"
+    >
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef>No.</th>
+        <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="fecha">
+        <th mat-header-cell *matHeaderCellDef>Alta</th>
+        <td mat-cell *matCellDef="let element">{{ element.fecha }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="usuario">
+        <th mat-header-cell *matHeaderCellDef>Usuario</th>
+        <td mat-cell *matCellDef="let element">
+          {{ element.usuario }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="modulo">
+        <th mat-header-cell *matHeaderCellDef>modulo</th>
+        <td mat-cell *matCellDef="let element">{{ element.modulo }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef>Accion</th>
+        <td mat-cell *matCellDef="let element">{{ element.action }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>status</th>
+        <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="values">
+        <th mat-header-cell *matHeaderCellDef>Detalle</th>
+        <td mat-cell *matCellDef="let element">{{ element.values }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>
